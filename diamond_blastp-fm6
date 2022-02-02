@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH -o slurm-logs/arrayJob_%A_%a.out
+#SBATCH -e slurm-logs/arrayJob_%A_%a.err
+#SBATCH -a 1-1999
+#SBATCH -n 1
+#SBATCH --cpus-per-task=12
+#SBATCH --mem=90GB
+#SBATCH --time=4:00:00
+
+LINE=$(sed -n "$SLURM_ARRAY_TASK_ID"p filelist.txt)
+echo $LINE
+
+/scratch/drn2/software/funannotate/bin/diamond blastp --db /scratch/drn2/software/funannotate/db/uniprot --query $LINE --out diamond_blastp_6-80_20-ultra/"$LINE".diamond.blastp.txt --evalue 0.000000001 --min-score 20 --id 80 --ultra-sensitive --threads 12 -k 10 --outfmt 6 qseqid qlen sseqid sallseqid slen qstart qend sstart send qseq sseq evalue bitscore score length pident nident mismatch positive gapopen gaps ppos qframe btop stitle salltitles qcovhsp qtitle
+
+
+####works with diamond v2.0.14 (or later) ####
