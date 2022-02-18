@@ -33,7 +33,7 @@ rm "$LINE"-hit.contam-query-count.f
 rm "$LINE"-total-tORFs-w-hits.txt.f
 
 ##extract query seqs marked as contaminants
-LC_ALL=C fgrep -w -f Bacteria-contam-gen.uniq $LINE > "$LINE"-hit.contam-query.b
+LC_ALL=C fgrep -w -f gen_class-Bacteria.list-only_species.txt.uniq $LINE > "$LINE"-hit.contam-query.b
 
 ##count how many queries were contaminants
 cut -f 1 "$LINE"-hit.contam-query.b | cut -d : -f 2 - | sort - | uniq - | wc -l >> "$LINE"-hit.contam-query-count.b
@@ -42,7 +42,7 @@ cut -f 1 "$LINE"-hit.contam-query.b | cut -d : -f 2 - | sort - | uniq - | wc -l 
 cut -f 1 $LINE | sort - | uniq - | wc -l >> "$LINE"-total-tORFs-w-hits.txt.b
 
 ##find ratio to plot
-echo "$LINE" > "$LINE".name.f
+echo "$LINE" > "$LINE".name.b
 paste "$LINE".name.b "$LINE"-hit.contam-query-count.b "$LINE"-total-tORFs-w-hits.txt.b >> contam-tORF-total.ratio.b
 
 ##get contaminant rTORF names for downstream removal
