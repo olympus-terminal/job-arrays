@@ -14,6 +14,6 @@ echo $LINE
 
 #singularity pull docker://trinityrnaseq/transdecoder
 
-#singularity exec -B /scratch/drn2/PROJECTS/GORILLA/Fin-2batchHIFI-plus-ONT/genome-analyses:/data transdecoder_latest.sif TransDecoder.LongOrfs -t /data/"$LINE"
+#singularity exec -B /scratch/usr/PROJECTS/GORILLA/Fin-2batchHIFI-plus-ONT/genome-analyses:/data transdecoder_latest.sif TransDecoder.LongOrfs -t /data/"$LINE"
 
-singularity exec -B /scratch/drn2/PROJECTS/GORILLA/Fin-2batchHIFI-plus-ONT/genome-analyses:/data transdecoder_latest.sif TransDecoder.Predict -t /data/"$LINE" --no_refine_starts
+singularity exec -B /scratch/usr/PROJECTS/GORILLA/Fin-2batchHIFI-plus-ONT/genome-analyses:/data transdecoder_latest.sif TransDecoder.Predict -t /data/"$LINE" --no_refine_starts
