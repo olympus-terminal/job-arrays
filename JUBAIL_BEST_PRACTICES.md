@@ -102,8 +102,8 @@ def get_base_dir():
     hostname = socket.gethostname()
 
     # Check if running on HPC
-    if 'cn' in hostname or 'gpu' in hostname or 'jubail' in hostname:
-        # Running on Jubail HPC compute/GPU nodes
+    if 'cn' in hostname or 'dn' in hostname or 'gpu' in hostname or 'jubail' in hostname:
+        # Running on Jubail HPC compute/GPU nodes (cn* = compute, dn* = data)
         return Path("/scratch/drn2/PROJECTS/YOUR_PROJECT_NAME")
     else:
         # Running locally
@@ -658,7 +658,7 @@ data_file = "/media/drn2/External/PROJECT/data/input.tsv"
 ```python
 import socket
 hostname = socket.gethostname()
-if 'cn' in hostname or 'gpu' in hostname:
+if 'cn' in hostname or 'dn' in hostname or 'gpu' in hostname:
     data_file = "/scratch/drn2/PROJECTS/PROJECT/data/input.tsv"
 else:
     data_file = "/media/drn2/External/PROJECT/data/input.tsv"
