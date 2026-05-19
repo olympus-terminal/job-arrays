@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="job-arrays banner" width="100%">
+</p>
+
 # job-arrays
 
 SLURM job array patterns, HPC best practices, and example scripts for Jubail HPC.
